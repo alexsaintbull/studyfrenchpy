@@ -1,11 +1,8 @@
 
-import random
+from random import choice
 
-verbs = ["adorer", "aimer", "arriver","avoir","détester","donner","être","habiter","monter","parler","réserver","rester"]
-pronouns = {"je":"e", "tu":"es", "il/elle":"e", "nous":"ons", "vous":"ez", "ils/elles":"ent"}
-
-conj_avoir = {"je":"ai", "tu":"as", "il/elle":"a", "nous":"avons", "vous":"avez", "ils/elles":"ont"}
-conj_etre = {"je":"suis", "tu":"es", "il/elle":"est", "nous":"sommes", "vous":"êtes", "ils/elles":"sont"}
+from verbs import conj_avoir, conj_etre
+from verbs import reg_verbs_er as verbs, pronouns_er_conj as pronouns
 
 n = int(input("How many verbs should I ask you? "))
 
@@ -13,8 +10,8 @@ corrects = 0
 
 for i in range(n):
 
-	verb = random.choice(verbs)
-	pronoun = random.choice(list(pronouns))
+	verb = choice(verbs)
+	pronoun = choice(list(pronouns))
 
 	answer = input( pronoun + " ____ (" + verb + "): "  )
 
