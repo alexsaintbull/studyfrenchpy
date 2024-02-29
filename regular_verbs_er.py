@@ -1,4 +1,3 @@
-import sys
 from random import choice
 from itertools import product
 
