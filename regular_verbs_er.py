@@ -10,8 +10,6 @@ n = int(input("\nHow many verbs should I ask you? "))
 corrects = 0
 errors = {}
 
-past_question = {}
-
 questions = list(product(verbs, list(pronouns)))
 
 for i in range(n):
