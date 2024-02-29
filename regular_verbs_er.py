@@ -8,10 +8,20 @@ n = int(input("How many verbs should I ask you? "))
 
 corrects = 0
 
+past_question = {}
+
 for i in range(n):
 
 	verb = choice(verbs)
 	pronoun = choice(list(pronouns))
+
+	if verb not in past_question:
+		past_question[verb] = list(pronoun)
+	else:
+		while pronoun in past_question[verb]:
+			pronoun = choice(list(pronouns))
+	
+	past_question[verb] = list(past_question[verb]) + list(pronoun)
 
 	answer = input( pronoun + " ____ (" + verb + "): "  )
 
@@ -20,8 +30,7 @@ for i in range(n):
 	elif verb == "être":
 		rigth_answer = conj_etre[pronoun]
 	else:
-		rigth_answer = verb.removesuffix("er")
-		rigth_answer = rigth_answer + pronouns[pronoun]
+		rigth_answer = verb.removesuffix("er")  + pronouns[pronoun]
 
 	if answer == rigth_answer:
 		print("\nCORRECT! :)\n")
@@ -30,4 +39,4 @@ for i in range(n):
 		print("\nWRONG :(\n")
 		print("\t" + rigth_answer+"\n")
 
-print("Score: " + str(corrects) + "/" + str(n) + " (" + str(corrects*100/n) + "%)\n")
+print("Score: " + str(corrects) + "/" + str(n) + " (" + "{0:0.1f}".format(corrects*100/n) + "%)\n")
